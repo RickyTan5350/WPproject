@@ -1,0 +1,93 @@
+-- Project Specification --
+
+Students’ Hall Booking System
+There are three types of users: Admin, Student, and Hall Manager.
+ In this system, a student books a hall (for events, meetings, etc.) by filling out a booking form in the system, and a Hall Manager will approve/reject the booking request based on the availability of the requested hall.
+As the Admin, you manage the website and the database of the system. The database already contains information about all users, including their username, password, and user level.
+i) User Login and Verification
+- All users must log in using their assigned username and password.
+- Incorrect login will be rejected.
+- User verification will be handled using session management.
+
+ii) User Management
+Admin can:
+- Add new users
+- Edit and delete any current user information.
+
+Hall Manager and Student can edit their own profile information (except for Identification ID, which is not editable).
+(Use sessions to manage user levels and control access to different functions.)
+iii) Booking a Hall
+Student can:
+- Fill out a booking form with required details (event name, date, time, purpose, requested hall, etc.).
+- Submit the form for approval.
+- The system will perform data manipulation (insert, update, delete records in the database).
+
+iv) Approving / Rejecting Bookings
+Hall Manager can:
+- View submitted booking applications.
+- Approve or reject bookings based on hall availability.
+- Perform data manipulation (insert, update, delete, and retrieve data from multiple tables).
+
+v) Viewing Booking Status
+Student can:
+- View the status of their booking application (approved, pending, rejected).
+
+vi) Viewing Reports
+Hall Manager can:
+- View a sorted report (e.g. alphabetically by student name or by date) of all hall bookings.
+
+Student can:
+- View a report of only their own hall booking records.
+
+(Use sessions to enforce user level restrictions. Enable sorting & searching functionality.)
+vii) Access Control
+Admin:
+- Has full access to all pages.
+
+Hall Manager and Student:
+- Have limited access (for example, only Admin can add new users; this page should only be visible to Admin).
+- Access control should be enforced using user levels and session management.
+
+
+
+-- Main Component --
+
+Login Page → Dashboard (based on user role)
+
+Admin Dashboard:
+  - Manage Users (Add/Edit/Delete)
+
+Student Dashboard:
+  - View Profile
+  - Book Hall (Submit form)
+  - View My Bookings
+
+Hall Manager Dashboard:
+  - View Profile
+  - View & Approve/Reject Bookings
+  - View Reports (All bookings)
+
+
+
+-- Task Allocation --
+
+Planning and Design
+1. Define System requirement
+2. Design Database Schema
+3. Design Page Flow
+4. Design UI
+
+Implementation
+1. Implement Login System
+2. Implement User Management (Admin only)
+3. Implement Profile Management (Student and Hall Manager)
+4. Implement Hall Booking (Student)
+5. Implement Booking Approval (Hall Manager)
+6. Implement Viewing Results (Student)
+7. Implement Reporting (Hall Manager & Student)
+8. Implement Access Control (using session)
+
+Deployment
+1. Testing
+2. Deployment to server
+3. Documentation
