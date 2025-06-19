@@ -33,7 +33,7 @@ $row = $result->fetch_assoc();
         <meta charset="UTF-8">
         <meta name="viewport" content-width="device-width, initial-scale=1.0">
         <title>Student Profile</title>
-        <link rel="stylesheet" href="../assets/style.css">
+        <link rel="stylesheet" href="studentstyle.css"> <!--remember to change this-->
     </head>
     <body>
         <h2>My Profile</h2>
