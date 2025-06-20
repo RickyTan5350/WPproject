@@ -1,6 +1,6 @@
 <?php
 $host = 'localhost';
-$db   = 'hall_booking';
+$db   = 'wp_db';
 $user = 'root';
 $pass = '';
 $conn = new mysqli($host, $user, $pass, $db);
