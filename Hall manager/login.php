@@ -1,56 +1,65 @@
 <?php
-// hall_manager_login.php
-
 session_start();
-include "db.php";
+include 'db.php';
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $username = $_POST['username'];
-    $password = $_POST['password'];
+$error = "";
 
-    $sql = "SELECT * FROM users WHERE username=? AND password=?";
-    $stmt = $conn->prepare($sql);
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $username = trim($_POST['username']);
+    $password = trim($_POST['password']);
+
+    $stmt = $conn->prepare("SELECT id, role FROM users WHERE username = ? AND password = ?");
     $stmt->bind_param("ss", $username, $password);
     $stmt->execute();
-    $result = $stmt->get_result();
+    $stmt->store_result();
 
-    if ($row = $result->fetch_assoc()) {
-        if ($row['role'] == 'manager') {
-            $_SESSION['user_id'] = $row['id'];
-            $_SESSION['username'] = $row['username'];
-            $_SESSION['role'] = $row['role'];
+    if ($stmt->num_rows === 1) {
+        $stmt->bind_result($user_id, $role);
+        $stmt->fetch();
+        $_SESSION['user_id'] = $user_id;
+        $_SESSION['role'] = $role;
 
-            header("Location: manager/hall_dashboard.php");
-            exit;
+        // Redirect based on role
+        if ($role === 'admin') {
+            header("Location: admin/dashboard.php");
+        } elseif ($role === 'student') {
+            header("Location: student/dashboard.php");
+        } elseif ($role === 'manager') {
+            header("Location: manager/profile.php");
         } else {
-            $error = "Access denied. Only Hall Managers can log in here.";
+            $error = "Invalid role.";
         }
+        exit();
     } else {
-        $error = "Invalid login credentials.";
+        $error = "Invalid username or password.";
     }
+
+    $stmt->close();
 }
 ?>
 
-<!-- HTML Login Form goes below PHP -->
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Hall Manager Login</title>
-    <style>
-        body { font-family: Arial; margin: 100px; background: #f4f4f4; }
-        form { max-width: 400px; margin: auto; padding: 20px; background: white; box-shadow: 0 0 10px #ccc; }
-        input, button { width: 100%; padding: 10px; margin-top: 10px; }
-        p { color: red; text-align: center; }
-    </style>
+    <title>Login</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <form method="post">
-        <h2>Hall Manager Login</h2>
-        <input type="text" name="username" required placeholder="Username">
-        <input type="password" name="password" required placeholder="Password">
+<div class="container">
+    <h2>Login</h2>
+    <form method="POST">
+        <label>Username:</label>
+        <input type="text" name="username" required>
+
+        <label>Password:</label>
+        <input type="password" name="password" required>
+
         <button type="submit">Login</button>
-        <?php if (isset($error)) echo "<p>$error</p>"; ?>
+
+        <?php if ($error): ?>
+            <p style="color: red;"><?php echo $error; ?></p>
+        <?php endif; ?>
     </form>
+</div>
 </body>
 </html>
-
