@@ -23,6 +23,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 $result = $conn->query("SELECT * FROM profiles WHERE user_id='$user_id'");
 $row = $result->fetch_assoc();
+
+// If no profile yet — insert a new empty one
+if (!$row) {
+    $conn->query("INSERT INTO profiles (user_id, full_name, email, phone) VALUES ('$user_id', '', '', '')");
+    // Re-query to get the new profile row
+    $result = $conn->query("SELECT * FROM profiles WHERE user_id='$user_id'");
+    $row = $result->fetch_assoc();
+}
+
 ?>
 
 <?php include("../templates/header.php"); ?>
@@ -39,19 +48,20 @@ $row = $result->fetch_assoc();
         <h2>My Profile</h2>
         <form method="POST" action="">
             <label>Full Name:</label>
-            <input type="text" name="full_name" value="<?php echo $row['full_name']; ?>" required><br><br>
+            <input type="text" name="full_name" value="<?php echo ($row['full_name'] ? $row['full_name'] : ''); ?>" placeholder="Update your full name" required><br><br>
 
             <label>Email:</label>
-            <input type="email" name="email" value="<?php echo $row['email']; ?>" required><br><br>
+            <input type="email" name="email" value="<?php echo ($row['email'] ? $row['email'] : ''); ?>" placeholder="Update your email" required><br><br>
 
             <label>Phone:</label>
-            <input type="text" name="phone" value="<?php echo $row['phone']; ?>" required><br><br>
+            <input type="text" name="phone" value="<?php echo ($row['phone'] ? $row['phone'] : ''); ?>" placeholder="Update your phone number" required><br><br>
 
             <input type="submit" value="Update Profile">
         </form>
     </body>
 </html>
 
-
+<br>
+<a href="../dashboard.php" class="btn-back">Back to Dashboard</a>
 
 <?php include("../templates/footer.php"); ?>

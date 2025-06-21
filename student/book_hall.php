@@ -21,6 +21,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     echo "<script>alert('Booking submitted successfully!'); window.location='view_status.php';</script>";
     exit();
 }
+
+include("../templates/header.php");
 ?>
 
 <!DOCTYPE html>
@@ -56,3 +58,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 </body>
 </html>
+
+<br>
+<a href="../dashboard.php" class="btn-back">Back to Dashboard</a>
+
+<?php include("../templates/footer.php"); ?>

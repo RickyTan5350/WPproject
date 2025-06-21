@@ -101,3 +101,24 @@ table tr:nth-child(even) {
         font-size: 14px;
     }
 }
+
+input::placeholder, textarea::placeholder {
+    color: #999; /* light grey */
+    opacity: 1;  /* ensure it's visible on all browsers */
+    font-style: italic;
+}
+
+.btn-back {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #3a86ff;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: 0.3s ease;
+}
+
+.btn-back:hover {
+    background-color: #265dbe;
+}

@@ -9,6 +9,8 @@ if ($_SESSION['role'] != 'student') {
 
 $student = $_SESSION['username'];
 $result = $conn->query("SELECT * FROM bookings WHERE student='$student' ORDER BY date DESC");
+
+include("../templates/header.php");
 ?>
 
 <!DOCTYPE html>
@@ -49,3 +51,8 @@ $result = $conn->query("SELECT * FROM bookings WHERE student='$student' ORDER BY
 
 </body>
 </html>
+
+<br>
+<a href="../dashboard.php" class="btn-back">Back to Dashboard</a>
+
+<?php include("../templates/footer.php"); ?>

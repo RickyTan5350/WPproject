@@ -17,14 +17,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['username'] = $row['username'];
         $_SESSION['role'] = $row['role'];
 
-        if ($row['role'] == 'admin') {
-            header("Location: admin/manage_users.php");
-        } elseif ($row['role'] == 'student') {
-            header("Location: student/book_hall.php");
-        } elseif ($row['role'] == 'manager') {
-            header("Location: manager/approve_bookings.php");
-        }
+        // Redirect to dashboard instead of specific pages
+        header("Location: dashboard.php");
         exit;
+
     } else {
         $error = "Invalid login credentials.";
     }
