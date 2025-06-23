@@ -28,6 +28,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt->execute();
     $stmt->close();
 
+    $_SESSION['message'] = "User deleted successfully.";
+    header("Location: manage_users.php");
+    exit;
+
+
     header("Location: manage_users.php");
     exit;
 }
@@ -44,12 +49,92 @@ if (!$user) {
     die("User not found.");
 }
 ?>
-
+<?php include("../templates/header.php"); ?>
 <!DOCTYPE html>
 <html>
 <head>
     <title>Edit User</title>
-    <link rel="stylesheet" href="../style.css"> <!-- assuming style.css is in /WP/ -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(to right, #e3f2fd, #ffffff);
+            margin: 0;
+            padding: 30px;
+            color: #333;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #0d47a1;
+        }
+
+        form {
+            max-width: 500px;
+            margin: auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 15px;
+            box-sizing: border-box;
+        }
+
+        input:focus, select:focus {
+            border-color: #2196f3;
+            box-shadow: 0 0 5px rgba(33,150,243,0.3);
+            outline: none;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #2196f3;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #1976d2;
+        }
+
+        .btn-back {
+            display: block;
+            width: fit-content;
+            margin: 30px auto 0;
+            padding: 10px 20px;
+            background-color: #43a047;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .btn-back:hover {
+            background-color: #2e7d32;
+        }
+
+        @media (max-width: 600px) {
+            form {
+                padding: 20px;
+            }
+        }
+    </style>
 </head>
 <body>
 
@@ -67,5 +152,9 @@ if (!$user) {
     <button type="submit">Update</button>
 </form>
 
+<a href="../dashboard.php" class="btn-back">Back to Dashboard</a>
+
 </body>
 </html>
+
+<?php include("../templates/footer.php"); ?>

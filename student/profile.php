@@ -17,6 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt = $conn->prepare("UPDATE profiles SET full_name=?, email=?, phone=? WHERE user_id=?");
     $stmt->bind_param("sssi", $full_name, $email, $phone, $user_id);
     $stmt->execute();
+    $stmt->close();
 
     echo "<script>alert('Profile updated!');</script>";
 }

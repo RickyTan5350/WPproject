@@ -1,17 +1,16 @@
 <?php
 session_start();
 
-// If not logged in, redirect to login
 if (!isset($_SESSION['role'])) {
     header("Location: login.php");
     exit();
 }
 
 $pageTitle = "Dashboard";
-include("templates/header.php");
+include("templates/headerdashboard.php");
 ?>
 
-<h2>Welcome, <?php echo htmlspecialchars($_SESSION['username']); ?>!</h2>
+<h2>UTM Hall Booking System</h2>
 
 <div class="dashboard-grid">
 <?php
@@ -23,7 +22,7 @@ switch ($_SESSION['role']) {
                 <p>Add, edit or delete users in the system.</p>
             </a>
             <a href='admin/add_user.php' class='menu-card'>
-                <h3➕ Add New User</h3>
+                <h3>➕ Add New User</h3>
                 <p>Register a new system user.</p>
             </a>
         ";
@@ -68,6 +67,5 @@ switch ($_SESSION['role']) {
 }
 ?>
 </div>
-
 
 <?php include("templates/footer.php"); ?>

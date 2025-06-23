@@ -31,7 +31,7 @@ if (!isset($pageTitle)) {
             padding: 25px 20px;
             color: white;
             font-family: Arial, sans-serif;
-            margin-bottom:15px;
+            
         }
 
         .navbar a {
@@ -69,7 +69,7 @@ if (!isset($pageTitle)) {
         <span>Welcome, <?= htmlspecialchars($_SESSION['username']) ?></span>
     </div>
     <div class="navbar-right">
-        <a href="../logout.php"><button>Logout</button></a>
+        <a href="logout.php"><button>Logout</button></a>
 </nav>
 
 </body>

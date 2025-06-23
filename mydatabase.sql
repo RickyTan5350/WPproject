@@ -64,9 +64,9 @@ INSERT INTO profiles (user_id, full_name, email, phone) VALUES
 (3, 'Manager User', 'manager@example.com', '0178888888');
 
 INSERT INTO halls (hall_name, location, capacity) VALUES
-('BK1', 'Block K1', 100),
-('MPK1', 'Multipurpose Hall 1', 300),
-('Kejora Hall', 'Kejora Building', 500),
+('BK1', 'Bilik Kuliah 1 N28A', 100),
+('BK2', 'Bilik Kuliah 2 N28A', 100),
+('Kejora Hall', 'Kejora Hall', 500),
 ('DSI Hall', 'DSI Complex', 600),
 ('SportHall', 'Sports Complex', 400);
 -- DROP TABLES IF THEY EXIST

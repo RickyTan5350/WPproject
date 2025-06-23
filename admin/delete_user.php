@@ -9,7 +9,6 @@ if ($_SESSION['role'] != 'admin') {
 
 include "../db.php";
 
-// Get ID from URL
 $id = $_GET['id'] ?? null;
 if (!$id || !is_numeric($id)) {
     die("Invalid user ID.");
@@ -21,7 +20,7 @@ $stmt->bind_param("i", $id);
 $stmt->execute();
 $stmt->close();
 
-// Redirect back to manage users page
 header("Location: manage_users.php");
 exit;
 ?>
+<?php include("../templates/footer.php"); ?>
