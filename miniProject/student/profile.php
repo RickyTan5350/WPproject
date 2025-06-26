@@ -43,7 +43,123 @@ if (!$row) {
         <meta charset="UTF-8">
         <meta name="viewport" content-width="device-width, initial-scale=1.0">
         <title>Student Profile</title>
-        <link rel="stylesheet" href="studentstyle.css"> <!--remember to change this-->
+        <style>
+            body {
+                font-family: 'Segoe UI', sans-serif;
+                background-color: #f0f4f8;
+                margin: 0;
+                padding: 20px;
+            }
+
+            h2 {
+                text-align: center;
+                color: #2c3e50;
+                margin-bottom: 30px;
+            }
+
+            form {
+                max-width: 500px;
+                margin: 0 auto;
+                background: #ffffff;
+                padding: 30px;
+                border-radius: 12px;
+                box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            }
+
+
+            form label {
+                display: block;
+                margin-bottom: 8px;
+                font-weight: bold;
+                color: #333;
+            }
+
+            form input[type="text"],
+            form input[type="email"],
+            form input[type="tel"],
+            form input[type="date"],
+            form textarea,
+            form select {
+                width: 100%;
+                padding: 10px 14px;
+                margin-bottom: 20px;
+                border: 1px solid #ccc;
+                border-radius: 6px;
+                box-sizing: border-box;
+                font-size: 14px;
+            }
+
+            form input[type="submit"] {
+                background-color: #3a86ff;
+                color: #fff;
+                border: none;
+                padding: 12px 20px;
+                font-size: 16px;
+                border-radius: 8px;
+                cursor: pointer;
+                transition: 0.3s ease;
+            }
+
+            form input[type="submit"]:hover {
+                background-color: #265df2;
+            }
+
+            table {
+                border-collapse: collapse;
+                width: 90%;
+                margin: 0 auto;
+                background: #ffffff;
+                box-shadow: 0 0 15px rgba(0, 0, 0, 0.08);
+            }
+
+            table th, table td {
+                border: 1px solid #ddd;
+                padding: 12px 15px;
+                text-align: center;
+            }
+
+            table th {
+                background-color: #3a86ff;
+                color: #ffffff;
+                font-weight: bold;
+            }
+
+            table tr:nth-child(even) {
+                background-color: #f9f9f9;
+            }
+
+            @media (max-width: 600px) {
+                form {
+                    padding: 20px;
+                }
+
+                table {
+                    width: 100%;
+                    font-size: 14px;
+                }
+            }
+
+            input::placeholder, textarea::placeholder {
+                color: #999; /* light grey */
+                opacity: 1;  /* ensure it's visible on all browsers */
+                font-style: italic;
+            }
+
+            .btn-back {
+                display: inline-block;
+                margin-top: 20px;
+                padding: 10px 20px;
+                background-color: #3a86ff;
+                color: white;
+                text-decoration: none;
+                border-radius: 8px;
+                transition: 0.3s ease;
+            }
+
+            .btn-back:hover {
+                background-color: #265dbe;
+            }
+        </style>
     </head>
     <body>
         <h2>My Profile</h2>
